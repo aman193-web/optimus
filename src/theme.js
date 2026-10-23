@@ -1,11 +1,10 @@
 const root = document.documentElement;
 const toggle = document.querySelector('.theme-toggle');
-const system = matchMedia('(prefers-color-scheme: dark)');
 let preference;
 try { preference = localStorage.getItem('optimus:theme'); } catch { /* Storage is optional. */ }
 const valid = (value) => value === 'dark' || value === 'light';
 function applyTheme() {
-  const theme = valid(preference) ? preference : system.matches ? 'dark' : 'light';
+  const theme = valid(preference) ? preference : 'light';
   root.dataset.theme = theme;
   toggle.setAttribute('aria-pressed', String(theme === 'dark'));
   toggle.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
@@ -27,7 +26,6 @@ toggle.addEventListener('click', () => {
   try { localStorage.setItem('optimus:theme', preference); } catch { /* Still switch without persistence. */ }
   applyTheme();
 }, { signal: lifecycle.signal });
-system.addEventListener('change', applyTheme, { signal: lifecycle.signal });
 window.addEventListener('storage', (event) => {
   if (event.key === 'optimus:theme' || event.key === null) {
     preference = event.newValue;
