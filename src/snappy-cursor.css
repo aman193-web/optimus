@@ -1,0 +1,24 @@
+.snappy-cursor {
+  position: fixed; top: 0; left: 0; width: 26px; height: 30px;
+  z-index: 10000; pointer-events: none; opacity: 0;
+  contain: layout style; will-change: transform;
+}
+.snappy-cursor.is-visible { opacity: 1; }
+.snappy-cursor svg {
+  display: block; transform-origin: 3px 3px;
+  transition: transform 180ms cubic-bezier(.23,1,.32,1);
+}
+.snappy-cursor path { fill: #103d2c; stroke: #f0ffe9; transition: fill 140ms ease; }
+html[data-theme="dark"] .snappy-cursor path { fill: #d0ffc2; stroke: #103d2c; }
+.snappy-cursor.is-hovering path,
+html[data-theme="dark"] .snappy-cursor.is-hovering path { fill: #e5ff00; stroke: #103d2c; }
+.snappy-cursor.is-hovering svg { transform: scale(1.12); }
+.snappy-cursor.is-pressed svg { transform: scale(.94); transition-duration: 90ms; }
+html:has(dialog[open]) .snappy-cursor { visibility: hidden; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html[data-snappy-cursor="active"]:not(:has(dialog[open])),
+  html[data-snappy-cursor="active"]:not(:has(dialog[open])) * { cursor: none !important; }
+}
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .snappy-cursor { display: none; }
+}

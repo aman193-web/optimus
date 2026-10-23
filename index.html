@@ -1,0 +1,1231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="Optimus: an open-source CMS for a simpler, performance-focused website. Managed hosting included. $24.50/month for 6 months, then $49/month. Free WordPress data migration."
+    />
+    <title>Optimus — The CMS. Minus the chaos.</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href="/fonts/dm-sans.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <script>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem("optimus:theme"); } catch {}
+        document.documentElement.dataset.theme = theme === "dark" || theme === "light"
+          ? theme : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      })();
+    </script>
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="/src/editorial.css" />
+    <link rel="stylesheet" href="/src/theme.css" />
+    <link rel="stylesheet" href="/src/hero-stage.css" />
+    <link rel="stylesheet" href="/src/comparison.css" />
+    <link rel="stylesheet" href="/src/waitlist.css" />
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/feature-entry.tsx"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to Content</a>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="#" aria-label="Optimus home"
+          ><span class="brand-mark" aria-hidden="true"></span
+          ><span translate="no"
+            >optimus<span class="brand-dot">.</span></span
+          ></a
+        >
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="#features">Why Optimus</a><a href="#migration">Migration</a
+          ><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false" title="Toggle dark mode">
+          <svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 14a8.5 8.5 0 0 1-10-10A8.5 8.5 0 1 0 20 14Z"/></svg>
+          <svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+        </button>
+        <button class="button button-ink nav-cta" type="button" data-open-waitlist
+          ><span>Join the waitlist</span><i data-icon="north"></i></button
+        ><button
+          class="menu-toggle"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          type="button"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation" hidden>
+        <a href="#features">Why Optimus <span>01</span></a
+        ><a href="#migration">Migration <span>02</span></a
+        ><a href="#pricing">Pricing <span>03</span></a
+        ><a href="#faq">FAQ <span>04</span></a>
+        <div class="mobile-theme-row"><span>Dark mode</span></div>
+      </nav>
+      <div class="scroll-progress" aria-hidden="true"></div>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-atmosphere" aria-hidden="true">
+          <div class="hero-light-flow"><span class="hero-field field-mint"></span><span class="hero-field field-lime"></span><span class="hero-field field-aqua"></span></div>
+          <div class="hero-pointer-grid"></div>
+        </div>
+        <div class="container">
+          <div class="hero-intro">
+            <div class="hero-heading-group">
+              <p class="eyebrow hero-eyebrow">
+                <span class="blue-dot"></span>OPEN-SOURCE CMS. OPEN
+                POSSIBILITIES.
+              </p>
+              <h1 id="hero-title">
+                <span class="hero-line">The CMS.</span>
+                <span class="sr-only">Without the chaos.</span>
+                <span
+                  id="hero-typing-root"
+                  class="hero-line blue-text hero-typing"
+                  aria-hidden="true"
+                >
+                  <span class="hero-typing-sizer"
+                    >Without the chaos.<span class="typing-animation-cursor"
+                      >|</span
+                    ></span
+                  >
+                  <span class="hero-typing-text"
+                    >Without the chaos.<span class="typing-animation-cursor"
+                      >|</span
+                    ></span
+                  >
+                </span>
+              </h1>
+            </div>
+            <div class="hero-copy">
+              <p class="hero-description">
+                More time for your content. Less time managing the machinery.
+                Meet a simpler, open-source CMS with managed hosting included.
+              </p>
+              <div class="hero-actions">
+                <button class="button button-blue interactive-button" type="button" data-open-waitlist
+                  ><span class="button-label">Join the waitlist</span
+                  ><i data-icon="arrow"></i
+                ></button>
+                <a class="button button-outline" href="#playground"
+                  ><span>Explore the CMS Concept</span
+                  ><span class="play-icon" aria-hidden="true">▶</span></a
+                >
+              </div>
+              <p class="hero-price">
+                Managed hosting included. <strong>$24.50/mo</strong> for 6
+                months, then $49/mo.
+              </p>
+            </div>
+          </div>
+          <div class="workspace-perspective" id="playground">
+            <div class="workspace-shell">
+              <div class="workspace-titlebar">
+                <span class="workspace-app-name"><span class="small-brand-mark" aria-hidden="true"></span>Optimus <span class="slash">/</span> Your workspace</span
+                ><span class="concept-badge">INTERACTIVE CONCEPT</span>
+              </div>
+              <div class="workspace-body">
+                <aside class="workspace-sidebar">
+                  <div class="workspace-project">
+                    <span class="project-logo">n.</span>
+                    <div>North Studio<small>Sample website</small></div>
+                    <span aria-hidden="true">⌄</span>
+                  </div>
+                  <div class="sidebar-label">YOUR WORKSPACE</div>
+                  <div class="sidebar-current">
+                    <i data-icon="page"></i>Content <span>3</span>
+                  </div>
+                  <p class="sidebar-subtitle">EXPLORE SAMPLE CONTENT</p>
+                  <div
+                    class="document-tabs"
+                    role="tablist"
+                    aria-label="Sample content"
+                  >
+                    <button
+                      role="tab"
+                      id="doc-home"
+                      aria-controls="content-editor"
+                      aria-selected="true"
+                      data-document="home"
+                    >
+                      <span class="document-dot"></span>Home</button
+                    ><button
+                      role="tab"
+                      id="doc-journal"
+                      aria-controls="content-editor"
+                      aria-selected="false"
+                      tabindex="-1"
+                      data-document="journal"
+                    >
+                      <span class="document-dot"></span>Journal</button
+                    ><button
+                      role="tab"
+                      id="doc-about"
+                      aria-controls="content-editor"
+                      aria-selected="false"
+                      tabindex="-1"
+                      data-document="about"
+                    >
+                      <span class="document-dot"></span>About
+                    </button>
+                  </div>
+                  <div class="sidebar-bottom">
+                    <span class="small-brand-mark" aria-hidden="true"></span
+                    ><span>Your content.<br />A clearer workspace.</span>
+                  </div>
+                </aside>
+                <div class="workspace-content">
+                  <div class="editor-toolbar">
+                    <div>
+                      <i data-icon="page"></i
+                      ><span id="document-name">Home</span
+                      ><span class="editor-draft">Sample page</span>
+                    </div>
+                    <div
+                      class="view-switch"
+                      role="group"
+                      aria-label="Workspace view"
+                    >
+                      <button
+                        type="button"
+                        data-view="edit"
+                        aria-pressed="true"
+                      >
+                        Editor</button
+                      ><button
+                        type="button"
+                        data-view="preview"
+                        aria-pressed="false"
+                      >
+                        Preview
+                      </button>
+                    </div>
+                  </div>
+                  <div class="editor-and-preview" data-view="edit">
+                    <div
+                      class="content-editor"
+                      id="content-editor"
+                      role="tabpanel"
+                      aria-labelledby="doc-home"
+                      tabindex="0"
+                    >
+                      <p class="editor-kicker">YOUR PAGE, IN THE MAKING</p>
+                      <label class="sr-only" for="demo-title"
+                        >Sample page title</label
+                      ><textarea
+                        id="demo-title"
+                        name="demoTitle"
+                        maxlength="75"
+                        rows="2"
+                        autocomplete="off"
+                      >
+Good ideas deserve a great home.</textarea>
+                      <div class="editor-format">
+                        <label for="demo-description">Page description</label>
+                        <span>Plain text</span>
+                      </div>
+                      <textarea
+                        id="demo-description"
+                        name="demoDescription"
+                        maxlength="220"
+                        rows="4"
+                        autocomplete="off"
+                      >
+A considered space for stories, perspectives, and the things we’re building next. Welcome to a clearer way forward.</textarea>
+                      <div
+                        class="editor-image"
+                        role="img"
+                        aria-label="Abstract teal architectural illustration"
+                      >
+                        <div class="sculpture-art" aria-hidden="true">
+                          <div class="art-plinth"></div>
+                          <div class="art-ring"></div>
+                          <div class="art-sphere"></div>
+                          <div class="art-block"></div>
+                        </div>
+                        <span>SPACE FOR YOUR NEXT IDEA</span>
+                      </div>
+                      <div class="editor-help">
+                        <i data-icon="bolt"></i
+                        ><span>Edit the title. See your words take shape.</span>
+                      </div>
+                    </div>
+                    <div class="preview-pane">
+                      <div class="preview-top">
+                        <span><span class="live-dot"></span> WEBSITE PREVIEW</span>
+                        <div
+                          class="device-switch"
+                          role="group"
+                          aria-label="Preview device"
+                        >
+                          <button
+                            type="button"
+                            data-device="desktop"
+                            aria-pressed="true"
+                            aria-label="Desktop preview"
+                          >
+                            <i data-icon="monitor"></i></button
+                          ><button
+                            type="button"
+                            data-device="mobile"
+                            aria-pressed="false"
+                            aria-label="Mobile preview"
+                          >
+                            <i data-icon="phone"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="website-preview" data-device="desktop">
+                        <div class="preview-brand">
+                          north<span>®</span
+                          ><span class="preview-menu" aria-hidden="true"
+                            >☰</span
+                          >
+                        </div>
+                        <p class="preview-eyebrow" id="preview-category">
+                          IDEAS, GIVEN SPACE.
+                        </p>
+                        <h2 id="preview-title">
+                          Good ideas deserve a great home.
+                        </h2>
+                        <p id="preview-description">
+                          A considered space for stories, perspectives, and the
+                          things we’re building next. Welcome to a clearer way
+                          forward.
+                        </p>
+                        <div class="preview-art">
+                          <div class="sculpture-art" aria-hidden="true">
+                            <div class="art-plinth"></div>
+                            <div class="art-ring"></div>
+                            <div class="art-sphere"></div>
+                            <div class="art-block"></div>
+                          </div>
+                        </div>
+                        <div class="preview-bottom">
+                          <span>Independent by design.</span
+                          ><span aria-hidden="true">↗</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="workspace-status">
+                <span
+                  ><span class="live-dot"></span>Local concept · edits stay in
+                  this browser</span
+                ><button type="button" id="reset-demo">
+                  Reset Demo <span aria-hidden="true">↻</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="foundation-strip"
+            role="list"
+            aria-label="The Optimus essentials"
+          >
+            <div class="benefit-item" role="listitem">
+              <span class="benefit-icon"><i data-icon="code"></i></span
+              ><span>Open-source core</span>
+            </div>
+            <div class="benefit-item" role="listitem">
+              <span class="benefit-icon"><i data-icon="server"></i></span
+              ><span>Managed hosting included</span>
+            </div>
+            <div class="benefit-item" role="listitem">
+              <span class="benefit-icon"><i data-icon="arrow"></i></span
+              ><span>Free WordPress data migration</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="problem" class="problem section-space">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">THE PROBLEM WITH MORE</p>
+            <div class="heading-split">
+              <h2>
+                Your website grew.<br />The
+                <span class="muted-heading">upkeep followed.</span>
+              </h2>
+              <p>
+                Plugins, updates, hosting. Every addition brings another
+                decision. Bring your focus back to the content.
+              </p>
+            </div>
+          </div>
+          <div class="stack-comparison" id="comparison">
+            <div class="comparison-top">
+              <span class="comparison-label">A DIFFERENT WAY TO BUILD</span>
+              <div
+                class="segmented-control"
+                role="group"
+                aria-label="Compare website approaches"
+              >
+                <button
+                  type="button"
+                  data-stack="traditional"
+                  aria-pressed="true"
+                >
+                  A Plugin-Heavy Setup</button
+                ><button
+                  type="button"
+                  data-stack="optimus"
+                  aria-pressed="false"
+                >
+                  With Optimus
+                </button>
+              </div>
+            </div>
+            <div class="comparison-stage" data-mode="traditional">
+              <div class="traditional-stack" aria-hidden="true">
+                <div class="stack-piece piece-one">
+                  <i data-icon="page"></i>CMS core
+                </div>
+                <div class="stack-piece piece-two">
+                  <span>＋</span>Plugin dependencies
+                </div>
+                <div class="stack-piece piece-three">
+                  <span>↻</span>Updates to manage
+                </div>
+                <div class="stack-piece piece-four">
+                  <span>?</span>Compatibility checks
+                </div>
+                <div class="stack-piece piece-five">
+                  <i data-icon="server"></i>Separate hosting
+                </div>
+                <div class="stack-piece piece-six">
+                  <span>!</span>More to maintain
+                </div>
+              </div>
+              <div class="optimus-stack" hidden>
+                <div class="unified-stack">
+                  <span class="brand-mark" aria-hidden="true"></span
+                  ><strong>One considered foundation.</strong
+                  ><span>Open-source CMS + managed hosting</span>
+                  <div>
+                    <span>YOUR CONTENT</span><i data-icon="arrow"></i
+                    ><span>YOUR WEBSITE</span>
+                  </div>
+                </div>
+              </div>
+              <div class="comparison-caption" aria-live="polite">
+                <span class="comparison-index">THE BUILD-UP</span>
+                <h3 id="comparison-title">
+                  More moving parts. More to maintain.
+                </h3>
+                <p id="comparison-description">
+                  Separate tools mean separate updates, compatibility checks,
+                  and hosting decisions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        id="features"
+        class="cms-features-section"
+        aria-labelledby="cms-features-title"
+      >
+        <div class="container">
+          <div class="cms-features-heading">
+            <div>
+              <p class="eyebrow">THE EVERYDAY ESSENTIALS</p>
+              <h2 id="cms-features-title">
+                Built around<br /><span class="blue-text">your content.</span>
+              </h2>
+            </div>
+            <p>
+              An open-source core. Managed hosting. A simpler starting point for
+              your website. Explore what comes together in Optimus.
+            </p>
+          </div>
+          <div id="cms-feature-root"></div>
+          <noscript
+            ><p>
+              Open-source core, managed hosting, security-conscious
+              architecture, a performance-focused CMS, and free WordPress data
+              migration. Design migration is quoted separately.
+            </p></noscript
+          >
+        </div>
+      </section>
+      <section
+        id="foundation"
+        class="foundation-section"
+        aria-labelledby="foundation-title"
+      >
+        <div class="container">
+          <div class="foundation-heading reveal">
+            <div>
+              <p class="eyebrow">INSIDE THE FOUNDATION</p>
+              <h2 id="foundation-title">
+                Quietly powerful.<br /><span>Open at the core.</span>
+              </h2>
+            </div>
+          </div>
+          <div class="foundation-explorer">
+            <div
+              class="foundation-tabs"
+              role="tablist"
+              aria-label="Explore the Optimus foundation"
+              aria-orientation="horizontal"
+            >
+              <button
+                id="feature-performance"
+                role="tab"
+                aria-controls="feature-panel"
+                aria-selected="true"
+                data-feature="performance"
+              >
+                <span class="foundation-tab-number">01</span
+                ><span>Performance</span><i data-icon="arrow"></i>
+              </button>
+              <button
+                id="feature-security"
+                role="tab"
+                aria-controls="feature-panel"
+                aria-selected="false"
+                tabindex="-1"
+                data-feature="security"
+              >
+                <span class="foundation-tab-number">02</span
+                ><span>Security</span><i data-icon="arrow"></i>
+              </button>
+              <button
+                id="feature-growth"
+                role="tab"
+                aria-controls="feature-panel"
+                aria-selected="false"
+                tabindex="-1"
+                data-feature="growth"
+              >
+                <span class="foundation-tab-number">03</span><span>Growth</span
+                ><i data-icon="arrow"></i>
+              </button>
+              <button
+                id="feature-open"
+                role="tab"
+                aria-controls="feature-panel"
+                aria-selected="false"
+                tabindex="-1"
+                data-feature="open"
+              >
+                <span class="foundation-tab-number">04</span
+                ><span>Open Source</span><i data-icon="arrow"></i>
+              </button>
+            </div>
+            <div
+              class="foundation-panel"
+              id="feature-panel"
+              role="tabpanel"
+              aria-labelledby="feature-performance"
+              tabindex="0"
+            >
+              <div class="foundation-copy" aria-live="polite">
+                <div class="foundation-chapter">
+                  <span id="feature-visual-number">01 / 04</span
+                  ><span class="foundation-icon" id="feature-icon"
+                    ><i data-icon="bolt"></i
+                  ></span>
+                </div>
+                <h3 id="feature-title">
+                  Less overhead.<br />More possibility.
+                </h3>
+                <p id="feature-description">
+                  A performance-focused CMS and managed hosting. A simpler
+                  foundation for your content.
+                </p>
+                <a class="foundation-link" id="feature-link" href="#pricing"
+                  >Explore the Managed Plan <i data-icon="arrow"></i
+                ></a>
+              </div>
+              <div
+                class="foundation-visual"
+                aria-label="Conceptual illustration of the Optimus foundation"
+              >
+                <div id="foundation-orb-root" data-feature="performance"></div>
+              </div>
+            </div>
+          </div>
+          <div class="foundation-controls">
+            <span
+              ><span id="foundation-progress">01</span> / 04
+              <span class="foundation-controls-note"
+                >— Explore what matters.</span
+              ></span
+            ><button id="next-feature" type="button">
+              Next: Security <i data-icon="arrow"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+      <section
+        id="migration"
+        class="migration section-space"
+        aria-labelledby="migration-title"
+      >
+        <div class="container">
+          <div class="migration-heading reveal">
+            <div>
+              <p class="eyebrow">YOUR NEXT MOVE</p>
+              <h2 id="migration-title">
+                A new CMS.<br /><span>Not a blank slate.</span>
+              </h2>
+            </div>
+            <p>
+              Your content took time to create. Bring it with you—and make a
+              clear plan for what comes next.
+            </p>
+          </div>
+          <div class="migration-cards">
+            <article class="migration-step-card reveal">
+              <div class="migration-card-top">
+                <span>01</span><i data-icon="page"></i>
+              </div>
+              <span class="migration-step-label">YOUR CONTENT</span>
+              <h3>Bring the work<br />you’ve already done.</h3>
+              <p>
+                Move your WordPress data to Optimus, free of charge. Start your
+                next chapter with your existing content.
+              </p>
+              <span class="migration-scope scope-included"
+                >WordPress data migration · Free</span
+              >
+              <button
+                class="text-button"
+                type="button"
+                data-open-brief="wordpress"
+              >
+                Plan your move<i data-icon="arrow"></i>
+              </button>
+            </article>
+            <article class="migration-step-card reveal">
+              <div class="migration-card-top">
+                <span>02</span><i data-icon="monitor"></i>
+              </div>
+              <span class="migration-step-label">YOUR DESIGN</span>
+              <h3>A familiar look.<br />Or a fresh direction.</h3>
+              <p>
+                Bringing your current design across is a separate piece of work,
+                scoped and quoted for your website.
+              </p>
+              <span class="migration-scope"
+                >Design migration · Separate quote</span
+              >
+              <button
+                class="text-button"
+                type="button"
+                data-open-brief="wordpress"
+                data-brief-design="true"
+              >
+                Plan your design<i data-icon="arrow"></i>
+              </button>
+            </article>
+            <article class="migration-step-card reveal">
+              <div class="migration-card-top">
+                <span>03</span><i data-icon="server"></i>
+              </div>
+              <span class="migration-step-label">YOUR FOUNDATION</span>
+              <h3>Settle in.<br />Keep building.</h3>
+              <p>
+                An open-source CMS core and managed hosting in one subscription.
+                More room to focus on your content.
+              </p>
+              <span class="migration-scope">Managed hosting included</span>
+              <a class="text-button" href="#pricing"
+                >Explore the plan<i data-icon="arrow"></i
+              ></a>
+            </article>
+          </div>
+          <p class="migration-scope-note">
+            Free WordPress data migration. Design migration quoted separately.
+          </p>
+        </div>
+      </section>
+      <section
+        id="growth"
+        class="growth section-space"
+        aria-labelledby="growth-title"
+      >
+        <div class="container growth-grid">
+          <div class="growth-copy reveal">
+            <p class="eyebrow">CONTENT WITH SOMEWHERE TO GO</p>
+            <h2 id="growth-title">
+              Good content.<br /><span>Room to grow.</span>
+            </h2>
+            <p>
+              A clear message deserves a thoughtful home. Build yours on an
+              open-source CMS with managed hosting, and give your content a
+              place to go next.
+            </p>
+            <div
+              class="growth-journey"
+              role="tablist"
+              aria-label="Explore the content journey"
+              aria-orientation="vertical"
+            >
+              <button
+                type="button"
+                role="tab"
+                id="growth-tab-content"
+                aria-controls="growth-panel-content"
+                aria-selected="true"
+                data-growth="content"
+              >
+                <span class="growth-step">01</span
+                ><span
+                  ><strong>Start with your story.</strong
+                  ><small>Useful words. A clear point of view.</small></span
+                ><i data-icon="arrow"></i>
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="growth-tab-discovery"
+                aria-controls="growth-panel-discovery"
+                aria-selected="false"
+                tabindex="-1"
+                data-growth="discovery"
+              >
+                <span class="growth-step">02</span
+                ><span
+                  ><strong>Make the first impression count.</strong
+                  ><small
+                    >Help people understand what they’ll find.</small
+                  ></span
+                ><i data-icon="arrow"></i>
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="growth-tab-next"
+                aria-controls="growth-panel-next"
+                aria-selected="false"
+                tabindex="-1"
+                data-growth="next"
+              >
+                <span class="growth-step">03</span
+                ><span
+                  ><strong>Give curiosity a next step.</strong
+                  ><small>Connect a good story to a useful action.</small></span
+                ><i data-icon="arrow"></i>
+              </button>
+            </div>
+            <p class="growth-note">
+              A stronger foundation for your work. SEO and growth still take
+              strategy, useful content, and ongoing care.
+            </p>
+          </div>
+          <div class="search-concept growth-studio reveal">
+            <div class="growth-studio-bar">
+              <span
+                ><span class="growth-live-dot"></span>THE CONTENT JOURNEY</span
+              ><span id="growth-step-count">01 / 03</span>
+            </div>
+            <div class="growth-panels">
+              <div
+                id="growth-panel-content"
+                class="growth-panel"
+                role="tabpanel"
+                aria-labelledby="growth-tab-content"
+              >
+                <div class="growth-panel-heading">
+                  <i data-icon="page"></i><span>YOUR WORDS, FIRST</span>
+                </div>
+                <h3>Every great website<br />starts with something to say.</h3>
+                <div class="growth-editor">
+                  <label for="growth-headline">Page headline</label>
+                  <input
+                    id="growth-headline"
+                    type="text"
+                    maxlength="90"
+                    value="Good ideas deserve a great home."
+                    autocomplete="off"
+                  />
+                  <label for="growth-summary">A little context</label>
+                  <textarea id="growth-summary" rows="3" maxlength="260">
+A considered space for stories, perspectives, and the things we’re building next. Welcome to a clearer way forward.</textarea>
+                  <span class="growth-edit-note"
+                    >Try your own words. Edits stay in this browser.</span
+                  >
+                </div>
+                <button
+                  class="growth-next"
+                  type="button"
+                  data-growth-next="discovery"
+                >
+                  See the first impression <i data-icon="arrow"></i>
+                </button>
+              </div>
+              <div
+                id="growth-panel-discovery"
+                class="growth-panel"
+                role="tabpanel"
+                aria-labelledby="growth-tab-discovery"
+                hidden
+              >
+                <div class="growth-panel-heading">
+                  <i data-icon="search"></i><span>BEFORE THE FIRST CLICK</span>
+                </div>
+                <h3>A clear introduction.<br />A reason to explore.</h3>
+                <div class="search-preview">
+                  <span class="search-site-icon" aria-hidden="true">n.</span>
+                  <div>
+                    North Studio<small
+                      >Sample website · Illustrative search result</small
+                    >
+                  </div>
+                  <h4 id="search-title">Good ideas deserve a great home.</h4>
+                  <p id="search-description">
+                    A considered space for stories, perspectives, and the things
+                    we’re building next. Welcome to a clearer way forward.
+                  </p>
+                </div>
+                <p class="growth-panel-note">
+                  Your headline and description set expectations. Make them
+                  specific, helpful, and true to the page.
+                </p>
+                <button
+                  class="growth-next"
+                  type="button"
+                  data-growth-next="next"
+                >
+                  Give the story somewhere to go <i data-icon="arrow"></i>
+                </button>
+              </div>
+              <div
+                id="growth-panel-next"
+                class="growth-panel"
+                role="tabpanel"
+                aria-labelledby="growth-tab-next"
+                hidden
+              >
+                <div class="growth-panel-heading">
+                  <i data-icon="north"></i><span>AFTER THE FIRST CLICK</span>
+                </div>
+                <h3>Keep the promise.<br />Continue the conversation.</h3>
+                <div class="growth-page-preview">
+                  <div class="growth-page-brand">
+                    north <span>STORIES &amp; PERSPECTIVES</span>
+                  </div>
+                  <span class="growth-page-label">YOUR NEXT CHAPTER</span>
+                  <h4 id="search-source">Good ideas deserve a great home.</h4>
+                  <p id="growth-page-description">
+                    A considered space for stories, perspectives, and the things
+                    we’re building next. Welcome to a clearer way forward.
+                  </p>
+                  <a href="#playground"
+                    >Explore the CMS concept <i data-icon="north"></i
+                  ></a>
+                </div>
+                <button
+                  class="growth-next"
+                  type="button"
+                  data-growth-next="content"
+                >
+                  Back to your words <i data-icon="arrow"></i>
+                </button>
+              </div>
+            </div>
+            <p class="search-disclaimer">
+              <i data-icon="page"></i>Interactive illustration · Your words in
+              three contexts.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="pricing" class="pricing section-space">
+        <div class="container">
+          <div class="pricing-heading reveal">
+            <p class="eyebrow">ONE PLAN. A CLEAR START.</p>
+            <h2>
+              A lighter CMS.<br /><span class="blue-text"
+                >A straightforward price.</span
+              >
+            </h2>
+            <p>
+              Your open-source CMS core and managed hosting, together.<br /> 50%
+              off for the first 6 months. Room to settle in.
+            </p>
+          </div>
+          <div class="pricing-layout reveal">
+            <div class="plan-card">
+              <div class="plan-heading">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <div>
+                  <h3>Optimus Managed</h3>
+                  <span>Your website’s new foundation.</span>
+                </div>
+                <span class="plan-discount">50% OFF</span>
+              </div>
+              <div class="plan-price">
+                <span>$</span><strong>24.50</strong><span>/month</span>
+              </div>
+              <p class="plan-period">
+                For your first 6 months. <strong>Then $49/month.</strong>
+              </p>
+              <button
+                class="button button-blue interactive-button"
+                type="button"
+                data-open-brief="new"
+              >
+                <span class="button-label">Start Your Next Chapter</span
+                ><i data-icon="arrow"></i>
+              </button>
+              <ul class="plan-inclusions">
+                <li><i data-icon="check"></i>Open-source CMS core</li>
+                <li><i data-icon="check"></i>Managed hosting included</li>
+                <li><i data-icon="check"></i>Free WordPress data migration</li>
+                <li>
+                  <i data-icon="check"></i>A simpler, performance-focused
+                  foundation
+                </li>
+              </ul>
+              <p class="plan-note">Design migration is quoted separately.</p>
+            </div>
+            <div class="pricing-explainer">
+              <div>
+                <p class="eyebrow">NO MENTAL MATH REQUIRED.</p>
+                <h3>Know what’s ahead.</h3>
+                <p>
+                  Move through the months to see exactly how the introductory
+                  price works.
+                </p>
+              </div>
+              <div class="price-calculator">
+                <div class="calculator-label">
+                  <label for="month-range">Your subscription month</label
+                  ><output for="month-range" id="month-output">Month 1</output>
+                </div>
+                <input
+                  id="month-range"
+                  type="range"
+                  name="month"
+                  min="1"
+                  max="12"
+                  value="1"
+                  step="1"
+                  aria-describedby="month-help"
+                />
+                <div class="range-ticks" aria-hidden="true">
+                  <span>01</span><span>06</span><span>12</span>
+                </div>
+                <div
+                  class="calculator-result"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  <span id="calculator-period">INTRODUCTORY PRICE</span
+                  ><strong
+                    ><span id="calculator-price">$24.50</span
+                    ><small>/month</small></strong
+                  >
+                  <p id="calculator-explanation">
+                    50% off the standard monthly price.
+                  </p>
+                </div>
+                <p id="month-help">
+                  Months 1–6: $24.50/month.<br />Month 7 onward: $49/month.
+                </p>
+              </div>
+              <div class="pricing-extra">
+                <i data-icon="code"></i>
+                <p>
+                  <strong>Open-source core. Managed convenience.</strong
+                  ><br />The subscription includes hosting. The CMS core remains
+                  open source.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="faq" class="faq section-space">
+        <div class="container faq-layout">
+          <div class="faq-heading reveal">
+            <p class="eyebrow">BEFORE YOU MAKE THE MOVE</p>
+            <h2>
+              Good questions.<br /><span class="muted-heading"
+                >Clear answers.</span
+              >
+            </h2>
+            <p>The practical details, in one place.</p>
+            <a class="text-button" href="#pricing"
+              >Explore the Plan <i data-icon="arrow"></i
+            ></a>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>What is Optimus?<i data-icon="plus"></i></summary>
+              <div>
+                <p>
+                  Optimus is a modern CMS with an open-source core and a focus
+                  on simplicity, performance, and security-conscious
+                  architecture. Its managed subscription includes hosting,
+                  giving you an alternative to a plugin-heavy website setup.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>
+                Is managed hosting included?<i data-icon="plus"></i>
+              </summary>
+              <div>
+                <p>
+                  Yes. Managed hosting is included in the Optimus subscription.
+                  You don’t need to arrange a separate hosting service for this
+                  plan.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>
+                What am I paying for if the CMS is open source?<i
+                  data-icon="plus"
+                ></i>
+              </summary>
+              <div>
+                <p>
+                  The CMS core is open source. The subscription is the managed
+                  offering, which includes hosting. It brings the CMS and its
+                  hosting foundation together in one plan.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>
+                What happens after the first 6 months?<i data-icon="plus"></i>
+              </summary>
+              <div>
+                <p>
+                  You pay $24.50 per month for the first six months—a 50%
+                  discount on the standard subscription. From month seven, the
+                  subscription is $49 per month.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>
+                What does free WordPress migration include?<i
+                  data-icon="plus"
+                ></i>
+              </summary>
+              <div>
+                <p>
+                  WordPress data migration is free. Moving or recreating your
+                  website’s design is a separate scope and is quoted separately.
+                  The details of your existing website can be reviewed when
+                  planning the move.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>
+                Can I bring my existing design?<i data-icon="plus"></i>
+              </summary>
+              <div>
+                <p>
+                  Design migration is scoped and quoted for your project. It is
+                  not included in free WordPress data migration or in the
+                  monthly subscription price.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>
+                How does Optimus support SEO and growth?<i data-icon="plus"></i>
+              </summary>
+              <div>
+                <p>
+                  Optimus provides a simpler, performance-focused foundation for
+                  your website and content. SEO also depends on useful content,
+                  site structure, thoughtful migration planning, and ongoing
+                  marketing. A CMS alone cannot guarantee rankings or traffic.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section class="final-cta waitlist-section" id="waitlist" aria-labelledby="waitlist-section-title">
+        <div class="container">
+          <div class="waitlist-stage reveal">
+            <div class="waitlist-section-copy">
+              <p class="eyebrow"><span class="waitlist-dot"></span> A NEW CHAPTER IS COMING</p>
+              <h2 id="waitlist-section-title">Less to manage.<br /><span>More to look forward to.</span></h2>
+              <p>We’re building a simpler home for your content. Join the waitlist for news when Optimus is ready for its next chapter.</p>
+              <button class="button button-blue interactive-button" type="button" data-open-waitlist><span class="button-label">Join the waitlist</span><i data-icon="arrow"></i></button>
+              <span class="waitlist-section-note">In development. A little closer, every day.</span>
+            </div>
+            <div class="waitlist-invitation" aria-hidden="true">
+              <span class="invitation-top">OPTIMUS <span>COMING SOON</span></span>
+              <span class="invitation-symbol"><span class="brand-mark"></span></span>
+              <span class="invitation-title">Your next<br />chapter.</span>
+              <span class="invitation-bottom">Open by nature. <i data-icon="north"></i></span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="editorial-footer">
+      <div class="container">
+        <div class="footer-directory">
+          <div class="footer-intro">
+            <a class="brand" href="#" aria-label="Optimus home"
+              ><span class="brand-mark" aria-hidden="true"></span
+              ><span translate="no">optimus.</span></a
+            >
+            <p>A simpler foundation.<br />For everything you want to build.</p>
+          </div>
+          <nav aria-label="Explore Optimus">
+            <h3>Explore Optimus</h3>
+            <a href="#playground">Try the CMS concept</a
+            ><a href="#foundation">How it comes together</a
+            ><a href="#growth">Content &amp; discoverability</a>
+          </nav>
+          <nav aria-label="Make your move">
+            <h3>Make your move</h3>
+            <a href="#migration">WordPress migration</a
+            ><a href="#pricing">The $49/month plan</a
+            ><a href="#faq">Questions &amp; answers</a>
+          </nav>
+          <nav aria-label="Open by nature">
+            <h3>Open by nature</h3>
+            <a href="#foundation">Inside the foundation</a
+            ><button type="button" data-open-brief="new">
+              Plan your website</button
+            ><a class="footer-top-link" href="#"
+              >Back to top <i data-icon="north"></i
+            ></a>
+          </nav>
+        </div>
+        <div class="footer-colophon">
+          <span>© <span id="year">2026</span> Optimus.</span>
+          <p>Open-source at heart. Forward by design.</p>
+          <button id="motion-toggle" type="button" aria-pressed="false">
+            Pause Motion <span aria-hidden="true">Ⅱ</span>
+          </button>
+        </div>
+      </div>
+        <div
+          class="footer-wordmark"
+          id="footer-wordmark-root"
+          aria-hidden="true"
+          translate="no"
+        >
+          optimus
+        </div>
+    </footer>
+    <dialog
+      id="project-dialog"
+      aria-labelledby="dialog-title"
+      aria-describedby="dialog-description"
+    >
+      <button
+        class="dialog-close"
+        type="button"
+        aria-label="Close project brief"
+      >
+        <i data-icon="plus"></i>
+      </button>
+      <div class="dialog-content">
+        <p class="eyebrow">YOUR NEXT CHAPTER</p>
+        <h2 id="dialog-title">
+          Start with<br /><span class="blue-text">a clear plan.</span>
+        </h2>
+        <p id="dialog-description">
+          Create a project brief to share with the Optimus team.
+        </p>
+        <form id="project-form">
+          <label for="project-name">Project Name</label
+          ><input
+            id="project-name"
+            name="projectName"
+            required
+            maxlength="100"
+            autocomplete="off"
+            placeholder="e.g. North Studio…"
+            aria-describedby="name-error"
+          />
+          <p id="name-error" class="field-error" aria-live="polite"></p>
+          <label for="project-type">Your Starting Point</label
+          ><select id="project-type" name="projectType">
+            <option value="new">I’m starting a new website</option>
+            <option value="wordpress">I’m moving from WordPress</option>
+            <option value="other">I’m moving from another platform</option>
+          </select>
+          <div id="migration-options" hidden>
+            <label class="checkbox-label"
+              ><input
+                type="checkbox"
+                name="designMigration"
+                id="design-migration"
+              />Include a separate quote for design migration.</label
+            >
+          </div>
+          <div class="brief-plan">
+            <span>Your Managed Plan</span><strong>$24.50/mo for 6 months</strong
+            ><small>Then $49/mo. Managed hosting included.</small>
+            <p id="brief-migration-note">
+              A fresh foundation for your new website.
+            </p>
+          </div>
+          <button class="button button-blue" type="submit">
+            Download Project Brief<i data-icon="download"></i>
+          </button>
+          <p class="form-disclaimer">
+            This creates a brief on your device. No details are sent, and no
+            account or subscription is created.
+          </p>
+          <p id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </dialog>
+    <dialog id="waitlist-dialog" aria-labelledby="waitlist-title" aria-describedby="waitlist-description">
+      <div class="waitlist-modal">
+        <button class="waitlist-close" type="button" aria-label="Close waitlist form"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
+        <div class="waitlist-modal-art" aria-hidden="true"><span class="brand-mark"></span><span class="waitlist-orbit orbit-one"></span><span class="waitlist-orbit orbit-two"></span><span class="waitlist-orbit orbit-three"></span></div>
+        <div class="waitlist-modal-content">
+          <p class="eyebrow">THE NEXT CHAPTER</p>
+          <h2 id="waitlist-title">Good things.<br /><span>Worth waiting for.</span></h2>
+          <p id="waitlist-description">A simpler CMS is taking shape. Be part of what comes next.</p>
+          
+          <form id="waitlist-form" novalidate>
+            <label for="waitlist-name">Your name <span>Optional</span></label>
+            <input id="waitlist-name" name="name" autocomplete="given-name" placeholder="What should we call you?" maxlength="80" />
+            <label for="waitlist-email">Email address</label>
+            <input id="waitlist-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254" aria-describedby="waitlist-email-error" />
+            <span class="waitlist-error" id="waitlist-email-error" aria-live="polite"></span>
+            <fieldset><legend>What brings you here? <span>Optional</span></legend><div class="waitlist-choices">
+              <label><input type="radio" name="interest" value="new" /><span>A new website</span></label>
+              <label><input type="radio" name="interest" value="wordpress" /><span>Moving from WordPress</span></label>
+              <label><input type="radio" name="interest" value="explore" /><span>Just exploring</span></label>
+            </div></fieldset>
+            <button type="submit" class="button button-blue interactive-button"><span class="button-label">Join the waitlist</span><i data-icon="arrow"></i></button>
+            <p class="waitlist-privacy">This demo doesn’t send or store your details.</p>
+          </form>
+          <div class="waitlist-result" hidden tabindex="-1" role="status">
+            <span class="waitlist-result-icon"><i data-icon="check"></i></span>
+            <h3>A little closer to what’s next.</h3>
+            <p>Your form looks good. This is a preview: your details haven’t been sent or added to a waitlist.</p>
+            <button type="button" class="button button-blue" data-waitlist-done>Back to exploring<i data-icon="arrow"></i></button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+    <div class="toast" role="status" aria-live="polite" id="demo-status"></div>
+  </body>
+</html>
