@@ -4,7 +4,7 @@ import { createOrbTransition } from "./orb-transition";
 
 const modes: Record<string, { state: OrbState; label: string }> = {
   performance: { state: "working", label: "A lighter foundation" },
-  security: { state: "breathing", label: "Considered at every layer" },
+  security: { state: "breathing", label: "Updates and security, taken care of" },
   growth: { state: "connecting", label: "Content, connected" },
   open: { state: "weaving", label: "Open at the core" },
 };

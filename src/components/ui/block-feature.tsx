@@ -163,15 +163,15 @@ export default function Feature() {
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         <Card className="security-card">
           <div className="cms-card-heading">
-            <span className="cms-card-kicker">SECURITY</span>
+            <span className="cms-card-kicker">UPDATES &amp; SECURITY</span>
             <Title>
-              Security, considered.
+              Updates, handled.
               <br />
-              From the foundation up.
+              Security, maintained.
             </Title>
           </div>
           <SecurityLayers />
-          <FeatureLink topic="security">Inside the architecture</FeatureLink>
+          <FeatureLink topic="security">See how we look after it</FeatureLink>
         </Card>
         <Card className="performance-card">
           <div className="cms-card-heading">

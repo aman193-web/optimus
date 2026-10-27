@@ -3600,3 +3600,20 @@ html[data-motion="paused"] .faq-list summary > .icon { transition: none; }
   .foundation-scroll-story .foundation-copy h3 { min-height: 2.4em; }
   .foundation-scroll-story .foundation-link { min-height: 44px; }
 }
+
+/* Four equal chapters, with room for ongoing care alongside the move. */
+@media (min-width: 1200px) {
+  .migration-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .migration-step-card { padding: 26px 24px; }
+  .migration-step-card h3 { font-size: 26px; }
+}
+@media (min-width: 701px) and (max-width: 1199px) {
+  .migration-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.hero-price > a > .icon { flex-shrink: 0; }
+
+@media (min-width: 900px) {
+  .hero .hero-copy { width: 100%; max-width: 840px; }
+  .hero .hero-description { width: 100%; max-width: 840px; }
+  .hero-description > span { display: block; }
+}

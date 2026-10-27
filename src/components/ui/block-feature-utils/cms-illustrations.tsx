@@ -144,7 +144,7 @@ export function SecurityLayers() {
       <div className="security-plane plane-front">
         <ShieldCheck size={40} strokeWidth={1.4} />
       </div>
-      <span className="security-label">CONSIDERED FROM THE START</span>
+      <span className="security-label">ONGOING CARE, BUILT IN</span>
     </div>
   );
 }

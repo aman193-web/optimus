@@ -5,6 +5,7 @@ const phrases = [
   "Without the chaos.",
   "Built for speed.",
   "Secure at the core.",
+  "Kept up to date.",
   "Yours to own.",
 ];
 

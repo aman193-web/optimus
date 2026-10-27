@@ -17,7 +17,7 @@ const chapters = {
   },
   foundation: {
     title: 'Less to manage behind the scenes.',
-    description: 'Your CMS and managed hosting, considered together. A performance-focused foundation that gives your content a place to grow.',
+    description: 'Managed hosting, ongoing CMS updates and security maintenance, together. We look after the system, so you can focus on your content.',
     label: 'One considered foundation.', link: 'Look inside the foundation', href: '#foundation',
   },
   freedom: {
