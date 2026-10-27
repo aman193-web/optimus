@@ -3,6 +3,15 @@ import "lenis/dist/lenis.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+let activeScroller;
+
+// Chapter navigation must cancel the same wheel tail that drives the page.
+export function scrollToPosition(top) {
+  if (activeScroller) activeScroller.scrollTo(top, { immediate: true });
+  else window.scrollTo({ top, behavior: "instant" });
+  ScrollTrigger.update();
+}
+
 export function setupSmoothScroll() {
   const lifecycle = new AbortController();
   const root = document.documentElement;
@@ -23,6 +32,7 @@ export function setupSmoothScroll() {
       gsap.ticker.remove(tick);
       lenis?.destroy();
       lenis = undefined;
+      activeScroller = undefined;
       delete root.dataset.scrollEngine;
       return;
     }
@@ -36,6 +46,7 @@ export function setupSmoothScroll() {
       prevent: (node) => node.matches("dialog, textarea, input, select, [contenteditable], [data-lenis-prevent]"),
       virtualScroll: ({ event }) => !event.ctrlKey && !event.metaKey && !event.shiftKey,
     });
+    activeScroller = lenis;
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add(tick);
     root.dataset.scrollEngine = "smooth";
@@ -88,6 +99,7 @@ export function setupSmoothScroll() {
     ScrollTrigger.removeEventListener("refresh", resize);
     gsap.ticker.remove(tick);
     lenis?.destroy();
+    activeScroller = undefined;
     delete root.dataset.scrollEngine;
   };
 }

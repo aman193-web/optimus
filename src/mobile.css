@@ -1,0 +1,80 @@
+/* Mobile content journey: navigation and preview form one compact workspace. */
+.growth-mobile-label { display: none; }
+@media (max-width: 640px) {
+  .growth-grid { gap: 26px; }
+  .growth-copy h2 { font-size: clamp(36px, 10.5vw, 44px); margin-top: 18px; }
+  .growth-copy > p:not(.eyebrow) { margin-top: 20px; line-height: 1.7; }
+  .growth-studio > .growth-journey {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+    margin: 0;
+    padding: 8px;
+    border-bottom: 1px solid #cbded0;
+    background: #f7faf6;
+  }
+  .growth-journey button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    min-height: 64px;
+    padding: 10px 4px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    text-align: center;
+  }
+  .growth-journey button > span:not(.growth-mobile-label):not(.growth-step),
+  .growth-journey button > .icon { display: none; }
+  .growth-mobile-label { display: block; font-size: 14px; font-weight: 600; order: 1; }
+  .growth-journey .growth-step { align-self: center; padding: 0; font-size: 10px; line-height: 1; }
+  .growth-journey button[aria-selected="true"] { background: #e6efcd; border-color: #b3c88c; color: #163f2b; }
+  .growth-studio-bar { padding: 15px 18px; font-size: 9px; }
+  .growth-panels { display: grid; padding: 22px 18px; }
+  .growth-panel { grid-area: 1 / 1; min-width: 0; min-height: 0; }
+  /* Reserve the tallest step without exposing inactive panels to focus or AT. */
+  .growth-panel[hidden] { display: flex !important; visibility: hidden; pointer-events: none; }
+  .growth-panel > h3 { font-size: clamp(23px, 6.3vw, 26px); line-height: 1.22; margin: 16px 0 22px; }
+  .growth-panel > h3 br { display: none; }
+  .growth-editor { padding: 14px; }
+  .growth-editor label { font-size: 12px; }
+  .growth-editor input, .growth-editor textarea { padding: 10px; font-size: 16px; }
+  .growth-editor textarea { min-height: 124px; line-height: 1.6; }
+  .growth-edit-note { font-size: 11px; line-height: 1.6; }
+  .growth-next { min-height: 54px; padding-top: 20px; font-size: 14px; }
+  .growth-grid > .growth-note { margin: -6px 4px 0; font-size: 12px; line-height: 1.7; color: #526c5b; }
+  .growth-page-brand { flex-wrap: wrap; gap: 8px; }
+  html[data-theme="dark"] .growth-studio > .growth-journey { background: #112d23; border-color: #365446; }
+  html[data-theme="dark"] .growth-journey button[aria-selected="true"] { background: #cfe5ad; border-color: #cfe5ad; color: #173e2b; }
+  html[data-theme="dark"] .growth-journey button[aria-selected="true"] .growth-step { color: #37583a; }
+  html[data-theme="dark"] .growth-grid > .growth-note { color: #a9bfb0; }
+
+  /* Consistent phone rhythm, readable controls, and flexible narrow layouts. */
+  :root { --section-spacing: 64px; }
+  .section-space { padding-block: 64px; }
+  .container { min-width: 0; }
+  .eyebrow { line-height: 1.6; }
+  #modern-websites .mws-tabs button { min-height: 48px; font-size: 12px; }
+  #modern-websites .mws-panel { min-height: 0; }
+  #modern-websites .mws-panel > p { min-height: 0; }
+  .ownership-tabs button { min-height: 52px; }
+  .ownership-panel { padding: 24px 18px; }
+  #open-code .ownership-copy > p { min-height: 0; }
+  #open-code .ownership-copy h3 { min-height: 0; }
+  .ownership-art { min-height: 285px; }
+  .foundation-section { padding-block: 64px; }
+  .foundation-panel { gap: 24px; padding-block: 28px 0; }
+  .foundation-orb { width: min(100%, 300px); }
+  .segmented-control button { min-height: 44px; white-space: normal; }
+  .faq-list summary { gap: 18px; min-height: 64px; font-size: 15px; line-height: 1.5; }
+  .faq-list summary > .icon { flex-shrink: 0; }
+  .price-stage-picker button { min-width: 0; }
+  #pricing .price-stage-picker strong { font-size: clamp(16px, 4.8vw, 19px); }
+  .calculator-result > strong { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+  .calculator-result > strong small { margin-left: 0; }
+}
+@media (max-width: 640px) {
+  #demo-description { font-size: 16px; }
+  .site-header .nav-cta { min-height: 44px; }
+  .mini-document-tabs button, #reset-demo, button[data-view] { min-height: 44px; }
+}

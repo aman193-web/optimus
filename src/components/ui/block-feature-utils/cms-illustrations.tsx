@@ -23,7 +23,7 @@ export function OpenCoreGrid() {
           </div>
         ))}
       </div>
-      <span className="illustration-note">OPEN-SOURCE CMS CORE</span>
+      <span className="illustration-note">YOUR CODEBASE. YOURS FOREVER.</span>
     </div>
   );
 }

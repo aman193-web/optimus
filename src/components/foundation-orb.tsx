@@ -80,7 +80,8 @@ export function FoundationOrb() {
     };
     const resize = new ResizeObserver(() => {
       const nextSize = canvas.getBoundingClientRect().width;
-      if (!nextSize) return;
+      const nextPixels = Math.round(nextSize * Math.min(devicePixelRatio || 1, 1.5));
+      if (!nextSize || (canvas.width === nextPixels && Math.abs(size - nextSize) < .5)) return;
       size = nextSize;
       const dpr = Math.min(devicePixelRatio || 1, 1.5);
       canvas.width = Math.round(size * dpr);

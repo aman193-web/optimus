@@ -5,7 +5,7 @@ const phrases = [
   "Without the chaos.",
   "Built for speed.",
   "Secure at the core.",
-  "Open by nature.",
+  "Yours to own.",
 ];
 
 function isMotionAllowed() {

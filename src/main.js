@@ -1,13 +1,17 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { icon, mountIcons } from "./icons.js";
-import { setupSmoothScroll } from "./smooth-scroll.js";
+import { setupSmoothScroll, scrollToPosition } from "./smooth-scroll.js";
+import { chapterAt, chapterPosition, createStickyStage } from "./scroll-chapters.js";
 import "./motion-budget.js";
 import "./snappy-cursor.js";
 import "./card-effects.js";
 import "./hero-light.js";
 import "./theme.js";
 import "./waitlist.js";
+import "./ownership.js";
+import "./modern-websites.js";
+import "./mobile.css";
 
 gsap.registerPlugin(ScrollTrigger);
 const disposeSmoothScroll = setupSmoothScroll();
@@ -304,7 +308,22 @@ function selectGrowth(tab, focus = false) {
       },
     );
 }
-wireTabs(growthTabs, selectGrowth, "vertical");
+const growthMobile = matchMedia("(max-width: 640px)");
+const growthJourney = $(".growth-journey");
+const growthNote = $(".growth-note");
+function syncGrowthLayout() {
+  if (growthMobile.matches) {
+    $(".growth-studio").prepend(growthJourney);
+    $(".growth-grid").append(growthNote);
+  } else {
+    $(".growth-copy").append(growthJourney, growthNote);
+  }
+  growthJourney.setAttribute("aria-orientation", growthMobile.matches ? "horizontal" : "vertical");
+  requestScrollRefresh();
+}
+syncGrowthLayout();
+growthMobile.addEventListener("change", syncGrowthLayout, { signal: modalityLifecycle.signal });
+wireTabs(growthTabs, selectGrowth, () => growthMobile.matches ? "horizontal" : "vertical");
 $$("[data-growth-next]").forEach((button) =>
   button.addEventListener("click", () => {
     // Keep focus in the same visual position on mobile when its current button hides.
@@ -336,7 +355,7 @@ const comparisonCopy = {
     index: "THE RESET",
     title: "A foundation that fits together.",
     description:
-      "Your open-source CMS and managed hosting, together. More room to focus on your content.",
+      "Your Open Code CMS and managed hosting, together. Your codebase stays 100% yours.",
   },
 };
 let stackTransition;
@@ -424,20 +443,21 @@ const featureData = {
     href: "#growth",
   },
   open: {
-    name: "Open Source",
+    name: "Open Code",
     index: "04 / 04",
     icon: "code",
     focus: "core",
-    title: "Open by nature.\nYours to build on.",
+    title: "Your code.\nYour possibilities.",
     description:
-      "An open-source CMS core. The freedom to build, with managed hosting included.",
-    link: "Explore the Plan",
-    href: "#pricing",
+      "100% ownership, at all times. Modify, move, reuse and resell your code. One restriction: no directly competing service.",
+    link: "Explore your Open Code rights",
+    href: "#open-code",
   },
 };
 const featureTabs = $$('.foundation-tabs [role="tab"]');
 const featureKeys = Object.keys(featureData);
 let activeFeature = "performance";
+let foundationScroll;
 function activateFeature(tab, writeUrl = true, animate = writeUrl) {
   activeFeature = tab.dataset.feature;
   const feature = featureData[activeFeature];
@@ -458,7 +478,10 @@ function activateFeature(tab, writeUrl = true, animate = writeUrl) {
   );
   const next = featureData[featureKeys[(index + 1) % featureKeys.length]];
   $("#next-feature").innerHTML = `Next: ${next.name} ${icon("arrow")}`;
-  if (writeUrl) updateParam("feature", activeFeature);
+  if (writeUrl) {
+    updateParam("feature", activeFeature);
+    foundationScroll?.select(index);
+  }
   if (animate && interactionMotionAllowed()) {
     gsap.fromTo(
       ".foundation-copy",
@@ -518,24 +541,36 @@ const currency = new Intl.NumberFormat("en-US", {
 });
 function updatePrice(writeUrl = true) {
   const month = Number($("#month-range").value);
-  const intro = month <= 6;
-  $("#month-output").textContent = `Month ${month}`;
+  const free = month === 0;
+  const intro = !free && month <= 6;
+  const price = free ? 0 : intro ? 25.5 : 49;
+  const label = free ? "First 7 days" : month === 1 ? "Month 1 · after day 7" : `Month ${month}`;
+  $("#month-output").textContent = label;
   $("#month-range").setAttribute(
     "aria-valuetext",
-    `Month ${month}: ${intro ? "$24.50" : "$49"} per month`,
+    `${label}: ${free ? "free" : `${currency.format(price)} per month`}`,
   );
-  $("#calculator-period").textContent = intro
+  $("#calculator-period").textContent = free ? "YOUR FREE START" : intro
     ? "INTRODUCTORY PRICE"
     : "STANDARD MONTHLY PRICE";
-  $("#calculator-price").textContent = currency.format(intro ? 24.5 : 49);
-  $("#calculator-explanation").textContent = intro
-    ? "50% off the standard monthly price."
-    : "Your introductory period is complete.";
+  $("#calculator-price").textContent = free ? "$0" : currency.format(price);
+  $("#calculator-unit").textContent = free ? "/first 7 days" : "/month";
+  $("#calculator-explanation").textContent = free
+    ? "Your first 7 days are completely free. Managed hosting included."
+    : intro ? "$25.50/month after your free first week, through month 6."
+    : "$49/month after 6 months. Your codebase remains 100% yours.";
+  $$('[data-price-stage]').forEach(button => {
+    button.setAttribute("aria-pressed", String(Number(button.dataset.priceStage) === (free ? 0 : intro ? 1 : 7)));
+  });
   if (writeUrl) updateParam("month", String(month));
 }
 $("#month-range").addEventListener("input", () => updatePrice());
+$$('[data-price-stage]').forEach(button => button.addEventListener("click", () => {
+  $("#month-range").value = button.dataset.priceStage;
+  updatePrice();
+}));
 const initialMonth = Number(initialParams.get("month"));
-if (Number.isInteger(initialMonth) && initialMonth >= 1 && initialMonth <= 12)
+if (Number.isInteger(initialMonth) && initialMonth >= 0 && initialMonth <= 12)
   $("#month-range").value = initialMonth;
 updatePrice(false);
 
@@ -675,15 +710,19 @@ form.addEventListener("submit", (event) => {
     other: "Moving from another platform",
   };
   const brief = [
-    "OPTIMUS — YOUR PROJECT BRIEF",
+    "OPTIMUSCMS — YOUR PROJECT BRIEF",
     "",
     `Project: ${name}`,
     `Starting point: ${labels[type]}`,
     "",
     "YOUR MANAGED PLAN",
-    "$24.50/month for the first six months (50% off).",
+    "First 7 days: completely free.",
+    "$25.50/month after the free period, through month six.",
     "$49/month from month seven onward.",
-    "Open-source CMS core. Managed hosting included.",
+    "Managed hosting included at every stage.",
+    "100% ownership of your codebase, at all times and forever.",
+    "Modify, move, reuse, customize and resell your code.",
+    "Only restriction: do not use OptimusCMS or its derivatives to build or operate a service that directly competes with OptimusCMS.",
     "",
     "YOUR MIGRATION",
     type === "wordpress"
@@ -696,7 +735,7 @@ form.addEventListener("submit", (event) => {
       : "Design migration: Not requested; quoted separately if needed.",
     "",
     "NEXT STEP",
-    "Share this brief with the Optimus team to discuss your project and confirm scope.",
+    "Share this brief with the OptimusCMS team to discuss your project and confirm scope.",
     "",
     "This is a local planning brief. No details have been sent,",
     "no account has been created, and no subscription has started.",
@@ -706,13 +745,13 @@ form.addEventListener("submit", (event) => {
   );
   const link = document.createElement("a");
   link.href = url;
-  link.download = "optimus-project-brief.txt";
+  link.download = "optimuscms-project-brief.txt";
   document.body.append(link);
   link.click();
   link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
   $("#form-status").textContent =
-    "Your brief is ready. Check your downloads for optimus-project-brief.txt.";
+    "Your brief is ready. Check your downloads for optimuscms-project-brief.txt.";
 });
 
 // Native scrolling reveals the problem before the solution. Pin only when the
@@ -721,18 +760,17 @@ function setupComparisonScroll() {
   const card = $(".stack-comparison");
   const pinned = innerWidth >= 900 && card.offsetHeight + 148 < innerHeight;
   card.classList.add("scroll-story");
+  const distance = () => Math.max(900, innerHeight);
+  const stage = pinned ? createStickyStage(card, () => 96, distance, requestScrollRefresh) : null;
   let chapter = -1;
-  ScrollTrigger.create({
-    trigger: card,
+  const trigger = ScrollTrigger.create({
+    trigger: stage?.wrapper || card,
     start: pinned ? "top 96px" : "top 75%",
-    end: pinned ? "+=800" : "bottom 75%",
-    pin: pinned,
-    anticipatePin: 1,
-    invalidateOnRefresh: true,
+    end: pinned ? () => `+=${distance()}` : "bottom 75%",
+    onRefreshInit: () => stage?.measure(),
     onUpdate: (self) => {
-      const next = self.progress < (pinned ? 0.62 : 0.52) ? 0 : 1;
-      // Only change on a chapter boundary. Manual selection isn't overwritten
-      // by every scroll tick, and scrolling back restores the problem.
+      const boundary = pinned ? .58 : .52;
+      const next = self.progress > boundary + (chapter === 1 ? -.025 : .025) ? 1 : 0;
       if (next !== chapter) {
         chapter = next;
         setStack(next ? "optimus" : "traditional", false, self.isActive);
@@ -740,6 +778,9 @@ function setupComparisonScroll() {
     },
   });
   return () => {
+    trigger.kill();
+    stackTransition?.progress(1);
+    stage?.destroy();
     card.classList.remove("scroll-story");
   };
 }
@@ -816,34 +857,41 @@ function setupFoundationScroll() {
     explorer.classList.remove("foundation-scroll-story");
     return;
   }
+  const top = () => {
+    const header = $(".site-header").offsetHeight;
+    return Math.max(navHeight(), header + (innerHeight - explorer.offsetHeight - header) / 2);
+  };
+  // About one screen per orb: time to form the shape, then appreciate its motion.
+  const distance = () => Math.max(680, innerHeight * .85) * featureKeys.length;
+  const stage = createStickyStage(explorer, top, distance, requestScrollRefresh);
   let chapter = -1;
-  ScrollTrigger.create({
-    trigger: explorer,
-    start: () => {
-      const header = $(".site-header").offsetHeight;
-      const centeredTop = header + (innerHeight - header - explorer.offsetHeight) / 2;
-      return `top ${Math.max(navHeight(), centeredTop)}px`;
-    },
-    end: "+=1400",
-    pin: true,
-    anticipatePin: 1,
-    invalidateOnRefresh: true,
+  const trigger = ScrollTrigger.create({
+    trigger: stage.wrapper,
+    start: () => `top ${top()}px`,
+    end: () => `+=${distance()}`,
+    onRefreshInit: stage.measure,
     onUpdate: (self) => {
-      const next = Math.min(3, Math.floor(self.progress * 4));
+      const next = chapterAt(self.progress, chapter, featureKeys.length);
       if (chapter !== next) {
         chapter = next;
-        // Only change at chapter boundaries, so direct tab selection remains usable.
         activateFeature(featureTabs[next], false, self.isActive);
       }
     },
   });
-  // The React orb mounts after this script; refresh the pin when its final
-  // dimensions arrive so centering includes the complete visual and caption.
-  const observer = new ResizeObserver(requestScrollRefresh);
-  observer.observe($(".foundation-explorer", explorer));
-  observer.observe($(".foundation-heading", explorer));
+  const controller = {
+    select(index) {
+      const bounds = explorer.getBoundingClientRect();
+      // A link elsewhere can select a feature without unexpectedly moving the page.
+      if (bounds.bottom <= navHeight() || bounds.top >= innerHeight) return;
+      chapter = index;
+      scrollToPosition(trigger.start + (trigger.end - trigger.start) * chapterPosition(index, featureKeys.length));
+    },
+  };
+  foundationScroll = controller;
   return () => {
-    observer.disconnect();
+    if (foundationScroll === controller) foundationScroll = undefined;
+    trigger.kill();
+    stage.destroy();
     explorer.classList.remove("foundation-scroll-story");
   };
 }

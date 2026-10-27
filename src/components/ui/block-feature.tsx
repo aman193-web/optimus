@@ -126,15 +126,15 @@ export default function Feature() {
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         <Card className="open-core-card">
           <div className="cms-card-heading">
-            <span className="cms-card-kicker">OPEN SOURCE</span>
+            <span className="cms-card-kicker">OPEN CODE</span>
             <Title>
-              Open at the core.
+              100% your code.
               <br />
-              Yours to build on.
+              Yours for good.
             </Title>
           </div>
           <OpenCoreGrid />
-          <FeatureLink topic="open">Explore the open foundation</FeatureLink>
+          <FeatureLink href="#open-code">Explore your ownership rights</FeatureLink>
         </Card>
         <Card className="content-workspace-card">
           <div className="cms-card-heading">

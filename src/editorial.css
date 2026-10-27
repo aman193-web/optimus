@@ -3586,3 +3586,17 @@ html[data-motion="paused"] .faq-list summary > .icon { transition: none; }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .site-header.scrolled { background: #fff; }
 }
+
+/* Stable native scroll stages. The browser owns entry/exit; GSAP changes chapters. */
+.scroll-stage { position: relative; display: flow-root; }
+.scroll-stage > .scroll-stage-content {
+  position: sticky;
+  top: var(--stage-top);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+@media (min-width: 1100px) {
+  .foundation-scroll-story .foundation-copy > p { min-height: 108px; }
+  .foundation-scroll-story .foundation-copy h3 { min-height: 2.4em; }
+  .foundation-scroll-story .foundation-link { min-height: 44px; }
+}

@@ -74,7 +74,7 @@ export function hwfFitSize(measured: number, width: number) {
 }
 
 export default function HalftoneWordmarkFooter() {
-  const wordmark = "optimus",
+  const wordmark = "Optimus",
     dotGap = 6,
     radius = 80,
     crop = 0.17,
@@ -174,14 +174,14 @@ export default function HalftoneWordmarkFooter() {
       const fit = hwfFitSize(m.measureText(word).width, w * 0.96);
       m.font = o.fontWeight + " " + fit + "px " + o.fontFamily;
       const box = m.measureText(word);
-      const cap = box.actualBoundingBoxAscent || fit * 0.72;
+      const descent = box.actualBoundingBoxDescent || fit * 0.2;
       const c = Math.max(0, Math.min(0.6, o.crop));
       m.fillStyle = "#000";
       m.textBaseline = "alphabetic";
       m.fillText(
         word,
         (w - box.width) / 2,
-        (h + cap - (box.actualBoundingBoxDescent || fit * 0.2)) / 2 + cap * c,
+        h - descent * (1 - c),
       );
       const img = m.getImageData(0, 0, w, h).data;
 
@@ -423,7 +423,7 @@ export default function HalftoneWordmarkFooter() {
   return (
     <div className="halftone-wordmark" ref={rootRef}>
       <canvas ref={canvasRef} aria-hidden="true" />
-      <span className="sr-only">optimus</span>
+      <span className="sr-only">{wordmark}</span>
     </div>
   );
 }
